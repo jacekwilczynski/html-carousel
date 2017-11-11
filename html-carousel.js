@@ -16,7 +16,7 @@ function expandCarousel(source) {
 	var itemCount = source.items.length;
 
 	var target = document.createElement('div');
-	target.id = source.id + '-render';
+	target.id = source.id;
 	target.classList.add('carousel', 'slide');
 	target.dataset.ride = 'carousel';
 	nestElements(target, ['ol', 'inner', 'prev', 'next'], ['ol', 'div', 'a', 'a']);
@@ -51,8 +51,7 @@ function expandCarousel(source) {
 	target.prev.txt.innerHTML = 'Previous';
 	target.next.txt.innerHTML = 'Next';
 
-	source.style.display = "none";
-	document.body.appendChild(target);
+	source.parentNode.replaceChild(target, source);
 }
 
 var carousels = document.querySelectorAll('carousel');
